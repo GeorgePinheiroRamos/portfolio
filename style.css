@@ -1,0 +1,86 @@
+/* C2 — Portfólio Pessoal com CSS | George Pinheiro Ramos */
+/* 1. Variáveis, seletor universal, herança e box model */
+:root {
+  --fundo: #f4f7fb;
+  --superficie: #ffffff;
+  --texto: #172238;
+  --secundario: #43516a;
+  --destaque: #165cc5;
+  --destaque-escuro: #104798;
+  --borda: #dce4f0;
+  --sombra: 0 12px 35px rgba(19, 42, 78, 0.09);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 6rem; }
+body { margin: 0; color: var(--texto); background: var(--fundo); font: 400 1rem/1.65 Arial, Helvetica, sans-serif; }
+img { display: block; max-width: 100%; }
+a { color: var(--destaque); text-underline-offset: 3px; }
+a:hover { color: var(--destaque-escuro); }
+a:focus-visible { outline: 3px solid #f6a72d; outline-offset: 4px; border-radius: 3px; }
+h1, h2, h3, p { margin-top: 0; }
+h1, h2, h3 { line-height: 1.2; }
+.container { width: min(1100px, calc(100% - 2.5rem)); margin-inline: auto; }
+/* 2. Posicionamento sticky, Flexbox e seletor descendente */
+.cabecalho { position: sticky; top: 0; z-index: 10; background: rgba(255,255,255,.98); border-bottom: 1px solid var(--borda); }
+.cabecalho-interno { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .75rem 2rem; padding-block: 1rem; }
+.marca { font-size: 1.1rem; font-weight: 800; color: var(--texto); text-decoration: none; }
+.marca span { color: var(--destaque); }
+.menu { display: flex; flex-wrap: wrap; list-style: none; gap: .25rem .45rem; padding: 0; margin: 0; }
+.menu a { display: inline-block; padding: .4rem .65rem; color: var(--texto); border-radius: 8px; font-size: .91rem; text-decoration: none; font-weight: bold; }
+.menu a:hover { background: #e8f0fd; color: var(--destaque-escuro); }
+.pular-conteudo { position: absolute; left: .75rem; top: -100px; z-index: 50; background: white; padding: .6rem; }
+.pular-conteudo:focus { top: .75rem; }
+/* 3. Apresentação com Flexbox */
+.apresentacao { background: linear-gradient(125deg, #e8f0fd, #f8fbff 75%); border-bottom: 1px solid var(--borda); }
+.apresentacao-interna { display: flex; align-items: center; justify-content: space-between; gap: 3.5rem; padding-block: 5rem; }
+.apresentacao-texto { flex: 1 1 560px; }
+.etiqueta { color: var(--destaque-escuro); font-size: .77rem; font-weight: 800; letter-spacing: .12em; }
+h1 { font-size: clamp(2.1rem, 4.5vw, 3.8rem); letter-spacing: -.035em; margin-bottom: 1.2rem; }
+h1 span { color: var(--destaque); }
+.subtitulo { font-size: 1.2rem; font-weight: 700; }
+.apresentacao-texto > p:not(.etiqueta) { max-width: 620px; color: var(--secundario); }
+.acoes { display: flex; flex-wrap: wrap; gap: .85rem; margin-top: 1.7rem; }
+.botao { padding: .8rem 1.3rem; border-radius: 9px; font-weight: bold; text-decoration: none; border: 2px solid var(--destaque); text-align: center; }
+.botao-primario { color: white; background: var(--destaque); }
+.botao-primario:hover { color: white; background: var(--destaque-escuro); }
+.botao-secundario { background: white; }
+.botao-secundario:hover { background: #e8f0fd; }
+.foto-moldura { flex: 0 1 270px; padding: 10px; background: white; border: 1px solid var(--borda); border-radius: 22px; box-shadow: var(--sombra); transform: rotate(2deg); }
+.foto-moldura img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 14px; }
+/* 4. Painéis e cards: padding, margin, border, shadow (box model) */
+.secoes { display: flex; flex-direction: column; gap: 1.3rem; padding-block: 3rem 4rem; }
+.painel { padding: clamp(1.4rem, 3vw, 2.5rem); background: var(--superficie); border: 1px solid var(--borda); border-radius: 16px; box-shadow: var(--sombra); }
+.painel h2 { font-size: clamp(1.55rem, 3vw, 2rem); margin-bottom: 1rem; }
+.painel > p:last-child { margin-bottom: 0; }
+.painel p { color: var(--secundario); }
+.cartao { padding: 1.5rem; border: 1px solid var(--borda); border-radius: 12px; background: #f9fbff; }
+.cartao h3 { font-size: 1.16rem; }
+.cartao p:last-child { margin-bottom: 0; }
+.habilidades { display: flex; flex-wrap: wrap; gap: .7rem; padding: 0; margin: 0; list-style: none; }
+.habilidades li { background: #e7f0ff; border: 1px solid #c8daf7; color: #123f7c; border-radius: 999px; padding: .4rem .9rem; font-weight: bold; }
+.projetos-grid { display: flex; flex-wrap: wrap; gap: 1.1rem; }
+.projeto { flex: 1 1 300px; }
+.link-projeto { font-weight: 700; }
+.contatos { list-style: none; padding: 0; margin: 1.2rem 0 0; display: flex; flex-direction: column; gap: .65rem; }
+.contatos li { overflow-wrap: anywhere; }
+.rodape { background: #172238; color: #f4f7fb; padding-block: 1.5rem; }
+.rodape .container { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .5rem; }
+.rodape p { margin: 0; }
+.rodape a { color: white; }
+/* 5. Layout responsivo para tablets e celulares */
+@media (max-width: 760px) {
+  .cabecalho-interno { flex-direction: column; align-items: flex-start; }
+  .menu { gap: .15rem; }
+  .menu a { padding: .35rem .45rem; }
+  .apresentacao-interna { flex-direction: column-reverse; align-items: flex-start; padding-block: 2.7rem; gap: 2rem; }
+  .apresentacao-texto { flex: 1 1 auto; }
+  .foto-moldura { flex: 0 0 auto; width: min(240px, 76%); transform: none; }
+  .secoes { padding-block: 1.7rem 2.5rem; }
+}
+@media (max-width: 420px) {
+  .container { width: min(1100px, calc(100% - 1.5rem)); }
+  .botao { width: 100%; }
+  .menu a { font-size: .83rem; }
+}
+/* 6. Respeito à preferência de movimento reduzido (acessibilidade) */
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
